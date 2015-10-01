@@ -146,6 +146,9 @@ def window_to_NorthAmerica(fname_in, fname_out, fname_griddesc, grid_name):
     sys.stdout.flush()
     subprocess.call('m3wndw << DONE\n'
                     '\n'
+                    '\n'
+                    '\n'
+                    '\n'
                     '{grid_name}\n'
                     '\n'
                     'DONE'.format(grid_name=grid_name),

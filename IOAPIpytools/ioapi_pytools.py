@@ -128,11 +128,11 @@ def calculate_regrid_matrix(fname_griddesc, fname_matrix, fname_mattxt,
 
 
 def window_to_NorthAmerica(fname_in, fname_out, fname_griddesc, grid_name):
-    """run m3wndw (from the Models-3 I/O API) to window an I/O API file to
-    a specified model grid.  Models-3 I/O API "Logical names" (see
+    """Mass-conserving regrid using Models-3 I/O API tools.  Run
+    m3wndw (from the Models-3 I/O API) to window an I/O API file to a
+    specified model grid.  Models-3 I/O API "Logical names" (see
     Models-3 I/O API documentation) are defined internally, allowing
-    the user to specify paths to the physical files to be
-    manipulated.
+    the user to specify paths to the physical files to be manipulated.
 
     INPUTS
     fname_in, fname_out, fname_griddesc, grid_name
@@ -184,4 +184,77 @@ def run_regrid(fname_raw, fname_regridded, fname_matrix, fname_mattxt):
                     '\n'
                     '\n'
                     'DONE\n',
+                    shell=True)
+
+
+def run_regrid_NN(fname_raw, fname_regridded, fname_griddesc, out_grid_name):
+    """Nearest neighbor regrid using Models-3 I/O API tools.  Run
+     m3interp (from the Models-3 I/O API) to regrid a specified
+     dataset from a Models-3 I/O API file.  Models-3 I/O API "Logical
+     names" (see Models-3 I/O API documentation) are defined
+     internally, allowing the user to specify paths to the physical
+     files to be manipulated."""
+
+    os.environ['INFILE'] = fname_raw
+    os.environ['OUTFILE'] = fname_regridded
+    os.environ['GRIDDESC'] = fname_griddesc
+    # sys.stdout.write('in run_regrid_NN: ')
+    # sys.stdout.flush()
+    # delete_if_exists(fname_regridded)
+    # sys.stdout.write('\n: ')
+    # sys.stdout.flush()
+    subprocess.call('m3interp << DONE\n'
+                    'Y\n'
+                    'NONE\n'
+                    '\n'    # accept "INFILE" for input logical name
+                    '{}\n'  # output grid name
+                    '\n'    # default start date
+                    '\n'    # default start time
+                    '\n'    # default time step
+                    '\n'    # regrid all time steps (default)
+                    '\n'    # accept "OUTFILE" for output logical name
+                    'DONE\n'.format(out_grid_name),
+                    shell=True)
+
+
+def run_bcwndw(fname_gridded, fname_bdy,
+               LOROW=1, HIROW=123,
+               LOCOL=1, HICOL=123):
+    """Run bcwndw (from the Models-3 I/O API) to create a boundary
+    condition file from a specified Models-3 I/O API file containing
+    gridded data.  Models-3 I/O API "Logical names" (see Models-3 I/O
+    API documentation) are defined internally, allowing the user to
+    specify paths to the physical files to be manipulated."""
+
+    os.environ['INFILE'] = fname_gridded
+    os.environ['OUTFILE'] = fname_bdy
+
+    delete_if_exists(fname_bdy)
+    subprocess.call('bcwndw INFILE OUTFILE << DONE\n'
+                    '\n'    # default start date
+                    '\n'    # default start time
+                    '\n'    # default duration
+                    '\n'    # default windowed grid name
+                    '\n'    # default for boundary thickness (1)
+                    '{LOCOL}\n'
+                    '{HICOL}\n'
+                    '{LOROW}\n'
+                    '{HIROW}\n'
+                    'DONE\n'.format(LOCOL=LOCOL, HICOL=HICOL,
+                                    LOROW=LOROW, HIROW=HIROW),
+                    shell=True)
+
+def concat(file1, file2):
+    """concatenate file2 to file1 using m3xtract"""
+    os.environ['INFILE'] = file2
+    os.environ['OUTFILE'] = file1
+
+    subprocess.call('m3xtract << DONE\n'
+                    '\n'  # default logical name for input
+                    '0\n'  # all layers
+                    '\n'  # all variables
+                    '\n'  # default starting date
+                    '\n'  # default starting time
+                    '\n'  # default duration
+                    '\n',  # default logical name for output
                     shell=True)

@@ -11,11 +11,16 @@ from datetime import datetime
 
 def delete_if_exists(fname):
     """remove a file if it exists, with a message to stdout
+
+    ARGS:
+        fname (string): full path to the file to be removed
     """
     if os.path.exists(fname):
         sys.stdout.write('removed {}\n'.format(fname))
         sys.stdout.flush()
         os.remove(fname)
+        if os.path.exists(fname):
+            raise OSError('delete_if_exists failed: file still exists')
 
 
 def ioapi_const_multiply(fname_in,
@@ -24,27 +29,33 @@ def ioapi_const_multiply(fname_in,
                          constant_factor,
                          new_units,
                          new_desc):
-    """Multiply a variable in an I/O API file by a constant using M3COMBO
+    """Multiply a variable in a <Models-3 I/O API
+    <https://www.cmascenter.org/ioapi/documentation/3.1/html/>`_file
+    by a constant using `M3COMBO
+    <https://www.cmascenter.org/ioapi/documentation/3.1/html/M3COMBO.html>`_
     and place result in a new I/O API file.  Update the file headers
     for the new file with user-specified information.  Models-3 I/O
-    API "Logical names" (see Models-3 I/O API documentation) are
-    defined internally, allowing the user to specify paths to the
+    API `"Logical names"
+    <https://www.cmascenter.org/ioapi/documentation/3.1/html/LOGICALS.html>`_
+    are defined internally, allowing the user to specify paths to the
     physical files to be manipulated.
 
-    INPUTS
-    fname_in: str; full path to the input Models-3 I/O API file
-    fname_out: str; full path to the output Models-3 I/O API file
-    in_varname: str; the variable to be multiplied by a constant
-    constant_factor: scalar; the constant factor by which to multiply
-       in_varname
-    new_units: str; units of the variable named in_varname in the output file
-    new_desc: str; description text to populate the "desc" field of
-       the multiplied variable in the output file
+    ARGS:
+        fname_in (string): full path to the input Models-3 I/O API file
+        fname_out (string): full path to the output Models-3 I/O API file
+        in_varname (string): the variable to be multiplied by a constant
+        constant_factor (scalar): the constant factor by which to multiply
+           in_varname
+        new_units (string): units of the variable named in_varname in the
+           output file
+        new_desc: (string): description text to populate the "desc" field of
+           the multiplied variable in the output file
 
-    OUTPUTS
-    none
+    RETURNS
+        No return value
 
     Author: Timothy W. Hilton, thilton@ucmerced.edu
+
     """
 
     os.environ['COMBO_FILES'] = 'infile,'

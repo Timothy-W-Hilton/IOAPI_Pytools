@@ -1,3 +1,7 @@
+"""functions useful for regridding Models-3 I/O API data
+"""
+
+
 import os
 import os.path
 import sys
@@ -89,15 +93,20 @@ def calculate_regrid_matrix(fname_griddesc, fname_matrix, fname_mattxt,
     defined internally, allowing the user to specify paths to the
     physical files to be manipulated.
 
-    INPUTS
-    fname_griddesc: full path to the GRIDDESC file
-    fname_matrix: full path to the binary matrix file to be created
-    fname_mattxt: full path to the ASCII matrix file to be created
-    in_grid: name of the source grid in the GRIDDESC file
-    out_grid: name of the destination grid in the GRIDDESC file
-    col_refinement=1000
-    row_refinement=1000
+    ARGS:
+        fname_griddesc (string): full path to the GRIDDESC file
+        fname_matrix (string): full path to the binary matrix file to
+            be created
+        fname_mattxt (string): full path to the ASCII matrix file to
+            be created
+        in_grid (string): name of the source grid in the GRIDDESC file
+        out_grid (string): name of the destination grid in the GRIDDESC file
+        col_refinement (integer): col_refinement argument to pass to mtxcalc
+        row_refinement (integer): row_refinement argument to pass to mtxcalc
 
+    SEE ALSO:
+        `Models-3 I/O API mtxcalc documentation
+        <https://www.cmascenter.org/ioapi/documentation/3.1/html/MTXCALC.html>`_
     """
     os.environ['GRIDDESC'] = fname_griddesc
     os.environ['MATRIX'] = fname_matrix
@@ -128,14 +137,35 @@ def calculate_regrid_matrix(fname_griddesc, fname_matrix, fname_mattxt,
 
 
 def window_to_NorthAmerica(fname_in, fname_out, fname_griddesc, grid_name):
-    """Mass-conserving regrid using Models-3 I/O API tools.  Run
-    m3wndw (from the Models-3 I/O API) to window an I/O API file to a
-    specified model grid.  Models-3 I/O API "Logical names" (see
-    Models-3 I/O API documentation) are defined internally, allowing
-    the user to specify paths to the physical files to be manipulated.
+    """window SiB I/O API file to one quarter of the globe.
 
-    INPUTS
-    fname_in, fname_out, fname_griddesc, grid_name
+    Uses the Models-3 I/O API utility `m3wndw
+    <https://www.cmascenter.org/ioapi/documentation/3.1/html/M3WNDW.html>`_
+    to extract data from an I/O API file to a specified subgrid.
+
+    The window_to_NorthAmerica reflects the function's original use to
+    extract data that are North of the equator and between 0 W and 180
+    W longitude.  Considering this subset (25%) of a global data set
+    speeds calculation of regridding matrices considerably.
+
+    Models-3 I/O API `Logical names
+    <https://www.cmascenter.org/ioapi/documentation/3.1/html/LOGICALS.html>`_
+    are defined internally, allowing the user to specify paths to the
+    physical files to be manipulated.
+
+    Args:
+        fname_in (string): full path to the global SiB Models-3 I/O
+            API file
+        fname_out (string): full path for the windowed Models-3
+            I/O API file to create.  fname_out is overwritten if it
+            exists.
+        fname_griddesc (string): full path the Models-3 I/O API
+            `GRIDDESC file
+            <https://www.cmascenter.org/ioapi/documentation/3.1/html/GRIDDESC.html>`_
+            describing the destination grid.
+        grid_name (string): the name of the destination grid in the
+            GRIDDESC file.
+
     """
 
     os.environ['GRIDDESC'] = fname_griddesc
@@ -156,14 +186,31 @@ def window_to_NorthAmerica(fname_in, fname_out, fname_griddesc, grid_name):
 
 
 def run_regrid(fname_raw, fname_regridded, fname_matrix, fname_mattxt):
-    """run mtxcple (from the Models-3 I/O API) to regrid a specified
-     dataset from a Models-3 I/O API file.  Models-3 I/O API "Logical
-     names" (see Models-3 I/O API documentation) are defined
-     internally, allowing the user to specify paths to the physical
-     files to be manipulated.
+    """perform mass-conservative regrid of Models-3 I/O API data using
+    mtxcple
 
-    INPUTS
-    fname_raw, fname_regridded, fname_matrix, fname_mattxt
+    run `mtxcple
+    <https://www.cmascenter.org/ioapi/documentation/3.1/html/MTXCPLE.html>`_
+    (from the `Models-3 I/O API
+    <https://www.cmascenter.org/ioapi/documentation/3.1/html/>`_) to
+    regrid a specified dataset from a Models-3 I/O API file.
+
+    Models-3 I/O API `Logical names
+    <https://www.cmascenter.org/ioapi/documentation/3.1/html/LOGICALS.html>`_
+    are defined internally, allowing the user to specify paths to the
+    physical files to be manipulated.
+
+    ARGS:
+        fname_raw (string): full path for the Models-3 I/O API data
+            file containing data on the source grid.
+        fname_regridded (string): full path for the regridded Models-3
+            I/O API file to create. fname_regridded is overwritten if
+            it exists.
+        fname_matrix (string): full path for the matrix file (see
+            :mod:ioapi_tools.calculate_regrid_matrix)
+        fname_mattxt (string): full path for the mattxt file (see
+            :mod:ioapi_tools.calculate_regrid_matrix)
+
     """
 
     os.environ['IN_DATA'] = fname_raw

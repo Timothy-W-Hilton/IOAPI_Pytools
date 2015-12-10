@@ -29,8 +29,8 @@ def ioapi_const_multiply(fname_in,
                          constant_factor,
                          new_units,
                          new_desc):
-    """Multiply a variable in a <Models-3 I/O API
-    <https://www.cmascenter.org/ioapi/documentation/3.1/html/>`_file
+    """Multiply a variable in a `Models-3 I/O API
+    <https://www.cmascenter.org/ioapi/documentation/3.1/html/>`_ file
     by a constant using `M3COMBO
     <https://www.cmascenter.org/ioapi/documentation/3.1/html/M3COMBO.html>`_
     and place result in a new I/O API file.  Update the file headers
@@ -51,8 +51,8 @@ def ioapi_const_multiply(fname_in,
         new_desc: (string): description text to populate the "desc" field of
            the multiplied variable in the output file
 
-    RETURNS
-        No return value
+    RETURNS:
+        None
 
     Author: Timothy W. Hilton, thilton@ucmerced.edu
 

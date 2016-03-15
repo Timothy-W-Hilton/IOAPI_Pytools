@@ -26,6 +26,7 @@ def delete_if_exists(fname):
 def ioapi_const_multiply(fname_in,
                          fname_out,
                          in_varname,
+                         out_varname,
                          constant_factor,
                          new_units,
                          new_desc):
@@ -44,6 +45,8 @@ def ioapi_const_multiply(fname_in,
         fname_in (string): full path to the input Models-3 I/O API file
         fname_out (string): full path to the output Models-3 I/O API file
         in_varname (string): the variable to be multiplied by a constant
+        out_varname (string): the name of the multiplied variable in
+           the output file
         constant_factor (scalar): the constant factor by which to multiply
            in_varname
         new_units (string): units of the variable named in_varname in the
@@ -59,11 +62,11 @@ def ioapi_const_multiply(fname_in,
     """
 
     os.environ['COMBO_FILES'] = 'infile,'
-    os.environ['COMBO_VBLES'] = 'cos,'
+    os.environ['COMBO_VBLES'] = '{},'.format(out_varname)
     os.environ['COMBO_UNITS'] = '{},'.format(new_units)
-    os.environ['cos_VBLES'] = '{},'.format(in_varname)
-    os.environ['cos_COEFS'] = '{},'.format(constant_factor)
-    os.environ['cos_OFFSET'] = '0.0,'
+    os.environ['{}_VBLES'.format(out_varname)] = '{},'.format(in_varname)
+    os.environ['{}_COEFS'.format(out_varname)] = '{},'.format(constant_factor)
+    os.environ['{}_OFFSET'.format(out_varname)] = '0.0,'
     os.environ['outfile'] = 'OUTPUT_FILE'
     # the logical name of the output file is COMBO_3D -- this differs
     # from m3combo documentation

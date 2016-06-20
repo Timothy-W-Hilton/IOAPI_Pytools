@@ -1,4 +1,16 @@
-"""functions useful for regridding Models-3 I/O API data
+"""functions useful for manipulating `Models-3 I/O API
+    <https://www.cmascenter.org/ioapi/documentation/3.1/html/>`_ data
+    files in python.  Models-3 I/O API are built on `netCDF
+    <http://www.unidata.ucar.edu/software/netcdf/>`_, but I have found
+    that performing these tasks using Python's `netCDF4 module
+    <http://unidata.github.io/netcdf4-python/>`_ results in strange,
+    hard-to-debug errors.  For example, metadata strings that appear
+    to be I/O API-legal and that are readable with `ncdump
+    <http://www.unidata.ucar.edu/software/netcdf/netcdf/ncdump.html>`_
+    are not readable by the Models-3 I/O API Fortran API.  Performing
+    those same tasks using these python wrappers around m3tools seems
+    to avoid these problems.
+
 """
 
 
@@ -51,14 +63,11 @@ def ioapi_const_multiply(fname_in,
            in_varname
         new_units (string): units of the variable named in_varname in the
            output file
-        new_desc: (string): description text to populate the "desc" field of
+        new_desc (string): description text to populate the "desc" field of
            the multiplied variable in the output file
 
     RETURNS:
         None
-
-    Author: Timothy W. Hilton, thilton@ucmerced.edu
-
     """
 
     os.environ['COMBO_FILES'] = 'infile,'
@@ -302,21 +311,21 @@ def boundaries_from_csv(fname_csv,
     suggested by M3FAKE.
 
     ARGS:
-    fname_csv (string): full path to the comma-separated variable
-        data file containing the boundary conditions.
-    fname_bdy (string): full path to the Models-3 I/O API boundaries
-        file to create.  Will be overwritten if the file already exists.
-    fname_griddesc (string): full path to the Models-3 I/O API
-       `GRIDDESC
-       <http://www.cmascenter.org/ioapi/documentation/3.1/html/GRIDS.html#horiz>`_
-       file describing the model grid.
-    gridname (string): name of the grid to create boundaries for (must
-        be an entry in the GRIDDESC file).
-    nlevs (int): number of vertical levels.
-    file_desc (string): string to populate the `FDESC3D
-        <http://www.cmascenter.org/ioapi/documentation/3.1/html/INCLUDE.html#fdesc>`_
-        metadata field in the boundary condition file.  Defaults to
-        "boundary data".
+        fname_csv (string): full path to the comma-separated variable
+            data file containing the boundary conditions.
+        fname_bdy (string): full path to the Models-3 I/O API boundaries
+            file to create.  Will be overwritten if the file already exists.
+        fname_griddesc (string): full path to the Models-3 I/O API
+           `GRIDDESC
+           <http://www.cmascenter.org/ioapi/documentation/3.1/html/GRIDS.html#horiz>`_
+           file describing the model grid.
+        gridname (string): name of the grid to create boundaries for (must
+            be an entry in the GRIDDESC file).
+        nlevs (int): number of vertical levels.
+        file_desc (string): string to populate the `FDESC3D
+            <http://www.cmascenter.org/ioapi/documentation/3.1/html/INCLUDE.html#fdesc>`_
+            metadata field in the boundary condition file.  Defaults
+            to "boundary data".
 
     RETURNS:
     None
@@ -395,18 +404,18 @@ def dummy_top_bounds(fname_bdy,
     boundary files are supported.
 
     ARGS:
-    fname_bdy (string): full path to the Models-3 I/O API boundaries
-        file to create.  Will be overwritten if the file already exists.
-    fname_griddesc (string): full path to the Models-3 I/O API
-       `GRIDDESC
-       <http://www.cmascenter.org/ioapi/documentation/3.1/html/GRIDS.html#horiz>`_
-       file describing the model grid.
-    gridname (string): name of the grid to create boundaries for (must
-        be an entry in the GRIDDESC file).
-    file_desc (string): string to populate the `FDESC3D
-        <http://www.cmascenter.org/ioapi/documentation/3.1/html/INCLUDE.html#fdesc>`_
-        metadata field in the boundary condition file.  Defaults to
-        "boundary data".
+        fname_bdy (string): full path to the Models-3 I/O API boundaries
+            file to create.  Will be overwritten if the file already exists.
+        fname_griddesc (string): full path to the Models-3 I/O API
+           `GRIDDESC
+           <http://www.cmascenter.org/ioapi/documentation/3.1/html/GRIDS.html#horiz>`_
+           file describing the model grid.
+        gridname (string): name of the grid to create boundaries for (must
+            be an entry in the GRIDDESC file).
+        file_desc (string): string to populate the `FDESC3D
+            <http://www.cmascenter.org/ioapi/documentation/3.1/html/INCLUDE.html#fdesc>`_
+            metadata field in the boundary condition file.  Defaults
+            to "boundary data".
 
     RETURNS:
     None

@@ -13,7 +13,7 @@ data files using python.  Most of these are wrappers for the `m3tools
 executables.
 
 Full source code is available at
-`https://github.com/Timothy-W-Hilton/IOAPI_Pytools`_.
+`<https://github.com/Timothy-W-Hilton/IOAPI_Pytools>`_.
 
 Contents:
 

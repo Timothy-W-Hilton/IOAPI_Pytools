@@ -4,6 +4,7 @@ data files using python.  Most of these are wrappers for the `m3tools
 <https://www.cmascenter.org/ioapi/documentation/3.1/html/AA.html#tools>`_
 executables.
 
-Full documentation at `http://ioapi-pytools.readthedocs.io/en/latest/`_
+See also the full documentation at `<ReadTheDocs.org>
+http://ioapi-pytools.readthedocs.io/en/latest/`_
 
 17 June 2016 --  `Timothy W. Hilton <thilton@ucmerced.edu>`_

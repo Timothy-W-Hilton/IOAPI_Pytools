@@ -1,0 +1,2 @@
+theme: jekyll-theme-minimal
+include: [".htaccess", "_sources", "_static", "_images"]

@@ -6,7 +6,14 @@
 Welcome to IOAPIpytools's documentation!
 ========================================
 
-include ../README.rst
+A collection of tools for manipulating `Models-3 I/O API
+<https://www.cmascenter.org/ioapi/documentation/3.1/html/index.html>`_
+data files using python.  Most of these are wrappers for the `m3tools
+<https://www.cmascenter.org/ioapi/documentation/3.1/html/AA.html#tools>`_
+executables.
+
+Full source code is available at `github
+<https://github.com/Timothy-W-Hilton/IOAPI_Pytools>`_.
 
 Contents:
 

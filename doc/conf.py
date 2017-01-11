@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
-# IOAPIpytools documentation build configuration file, created by
-# sphinx-quickstart on Thu Jan  5 13:21:22 2017.
+# IOAPIPytools documentation build configuration file, created by
+# sphinx-quickstart on Wed Jan 11 16:22:16 2017.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -18,7 +18,7 @@ import os
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-#sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(0, os.path.abspath('..'))
 
 # -- General configuration ------------------------------------------------
 
@@ -31,7 +31,7 @@ import os
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.mathjax',
-    'sphinx.ext.githubpages',
+    'sphinx.ext.napoleon'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -49,7 +49,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'IOAPIpytools'
+project = u'IOAPIPytools'
 copyright = u'2017, Timothy W. Hilton'
 author = u'Timothy W. Hilton'
 
@@ -78,7 +78,7 @@ language = None
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = []
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -124,7 +124,7 @@ html_theme = 'alabaster'
 
 # The name for this set of Sphinx documents.
 # "<project> v<release> documentation" by default.
-#html_title = u'IOAPIpytools v1.0'
+#html_title = u'IOAPIPytools v1.0'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None
@@ -206,7 +206,7 @@ html_static_path = ['_static']
 #html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'IOAPIpytoolsdoc'
+htmlhelp_basename = 'IOAPIPytoolsdoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -228,7 +228,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'IOAPIpytools.tex', u'IOAPIpytools Documentation',
+    (master_doc, 'IOAPIPytools.tex', u'IOAPIPytools Documentation',
      u'Timothy W. Hilton', 'manual'),
 ]
 
@@ -258,7 +258,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'ioapipytools', u'IOAPIpytools Documentation',
+    (master_doc, 'ioapipytools', u'IOAPIPytools Documentation',
      [author], 1)
 ]
 
@@ -272,8 +272,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'IOAPIpytools', u'IOAPIpytools Documentation',
-     author, 'IOAPIpytools', 'One line description of project.',
+    (master_doc, 'IOAPIPytools', u'IOAPIPytools Documentation',
+     author, 'IOAPIPytools', 'One line description of project.',
      'Miscellaneous'),
 ]
 

@@ -49,7 +49,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Release:</th><td class="field-body">1.0</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 11, 2017</td>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">Jan 12, 2017</td>
 </tr>
 </tbody>
 </table>
@@ -70,12 +70,12 @@ to avoid these problems.</p>
 <dt id="IOAPIpytools.ioapi_pytools.boundaries_from_csv">
 <code class="descclassname">IOAPIpytools.ioapi_pytools.</code><code class="descname">boundaries_from_csv</code><span class="sig-paren">(</span><em>fname_csv</em>, <em>fname_bdy</em>, <em>fname_griddesc</em>, <em>gridname</em>, <em>nlevs</em>, <em>file_desc='boundary data'</em><span class="sig-paren">)</span><a class="headerlink" href="#IOAPIpytools.ioapi_pytools.boundaries_from_csv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create lateral boundary conditions file from data in CSV file</p>
-<p>Run <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/3.1/html/M3FAKE.html">M3FAKE</a>
+<p>Run <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/all_versions/html/M3FAKE.html">M3FAKE</a>
 to create a boundary condition file from a specified csv file
-containing the boundaries data.  Models-3 I/O API <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/3.1/html/LOGICALS.html">&#8220;Logical names&#8221;</a>
+containing the boundaries data.  Models-3 I/O API <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/all_versions/html/LOGICALS.html">&#8220;Logical names&#8221;</a>
 are defined internally, allowing the user to specify paths to the
 physical files to be manipulated.</p>
-<p>Currently only <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/3.1/html/DATETIME.html">time-independent</a>
+<p>Currently only <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/all_versions/html/DATETIME.html">time-independent</a>
 boundary files are supported.</p>
 <p>Currently can only use the default vertical sigma-P coordinates
 suggested by M3FAKE.</p>
@@ -89,12 +89,12 @@ data file containing the boundary conditions.</li>
 <li><strong>fname_bdy</strong> (<em>string</em>) &#8211; full path to the Models-3 I/O API boundaries
 file to create.  Will be overwritten if the file already exists.</li>
 <li><strong>fname_griddesc</strong> (<em>string</em>) &#8211; full path to the Models-3 I/O API
-<a class="reference external" href="http://www.cmascenter.org/ioapi/documentation/3.1/html/GRIDS.html#horiz">GRIDDESC</a>
+<a class="reference external" href="http://www.cmascenter.org/ioapi/documentation/all_versions/html/GRIDS.html#horiz">GRIDDESC</a>
 file describing the model grid.</li>
 <li><strong>gridname</strong> (<em>string</em>) &#8211; name of the grid to create boundaries for (must
 be an entry in the GRIDDESC file).</li>
 <li><strong>nlevs</strong> (<em>int</em>) &#8211; number of vertical levels.</li>
-<li><strong>file_desc</strong> (<em>string</em>) &#8211; string to populate the <a class="reference external" href="http://www.cmascenter.org/ioapi/documentation/3.1/html/INCLUDE.html#fdesc">FDESC3D</a>
+<li><strong>file_desc</strong> (<em>string</em>) &#8211; string to populate the <a class="reference external" href="http://www.cmascenter.org/ioapi/documentation/all_versions/html/INCLUDE.html#fdesc">FDESC3D</a>
 metadata field in the boundary condition file.  Defaults
 to &#8220;boundary data&#8221;.</li>
 </ul>
@@ -135,7 +135,7 @@ be created</li>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/3.1/html/MTXCALC.html">Models-3 I/O API mtxcalc documentation</a></p>
+<p class="last"><a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/all_versions/html/MTXCALC.html">Models-3 I/O API mtxcalc documentation</a></p>
 </div>
 </dd></dl>
 
@@ -163,12 +163,12 @@ be created</li>
 <dt id="IOAPIpytools.ioapi_pytools.dummy_top_bounds">
 <code class="descclassname">IOAPIpytools.ioapi_pytools.</code><code class="descname">dummy_top_bounds</code><span class="sig-paren">(</span><em>fname_bdy</em>, <em>fname_griddesc</em>, <em>gridname</em>, <em>file_desc='boundary data'</em><span class="sig-paren">)</span><a class="headerlink" href="#IOAPIpytools.ioapi_pytools.dummy_top_bounds" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create lateral boundary conditions file from data in CSV file</p>
-<p>Run <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/3.1/html/M3FAKE.html">M3FAKE</a>
+<p>Run <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/all_versions/html/M3FAKE.html">M3FAKE</a>
 to create a top boundary condition file containing 0.0 at all
-locations.  Models-3 I/O API <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/3.1/html/LOGICALS.html">&#8220;Logical names&#8221;</a>
+locations.  Models-3 I/O API <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/all_versions/html/LOGICALS.html">&#8220;Logical names&#8221;</a>
 are defined internally, allowing the user to specify paths to the
 physical files to be manipulated.</p>
-<p>Currently only <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/3.1/html/DATETIME.html">time-independent</a>
+<p>Currently only <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/all_versions/html/DATETIME.html">time-independent</a>
 boundary files are supported.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -178,12 +178,12 @@ boundary files are supported.</p>
 <li><strong>fname_bdy</strong> (<em>string</em>) &#8211; full path to the Models-3 I/O API boundaries
 file to create.  Will be overwritten if the file already exists.</li>
 <li><strong>fname_griddesc</strong> (<em>string</em>) &#8211; <p>full path to the Models-3 I/O API
-<a class="reference external" href="http://www.cmascenter.org/ioapi/documentation/3.1/html/GRIDS.html#horiz">GRIDDESC</a>
+<a class="reference external" href="http://www.cmascenter.org/ioapi/documentation/all_versions/html/GRIDS.html#horiz">GRIDDESC</a>
 file describing the model grid.</p>
 </li>
 <li><strong>gridname</strong> (<em>string</em>) &#8211; name of the grid to create boundaries for (must
 be an entry in the GRIDDESC file).</li>
-<li><strong>file_desc</strong> (<em>string</em>) &#8211; <p>string to populate the <a class="reference external" href="http://www.cmascenter.org/ioapi/documentation/3.1/html/INCLUDE.html#fdesc">FDESC3D</a>
+<li><strong>file_desc</strong> (<em>string</em>) &#8211; <p>string to populate the <a class="reference external" href="http://www.cmascenter.org/ioapi/documentation/all_versions/html/INCLUDE.html#fdesc">FDESC3D</a>
 metadata field in the boundary condition file.  Defaults
 to &#8220;boundary data&#8221;.</p>
 </li>
@@ -199,11 +199,11 @@ None</p>
 <dl class="function">
 <dt id="IOAPIpytools.ioapi_pytools.ioapi_const_multiply">
 <code class="descclassname">IOAPIpytools.ioapi_pytools.</code><code class="descname">ioapi_const_multiply</code><span class="sig-paren">(</span><em>fname_in</em>, <em>fname_out</em>, <em>in_varname</em>, <em>out_varname</em>, <em>constant_factor</em>, <em>new_units</em>, <em>new_desc</em><span class="sig-paren">)</span><a class="headerlink" href="#IOAPIpytools.ioapi_pytools.ioapi_const_multiply" title="Permalink to this definition">¶</a></dt>
-<dd><p>Multiply a variable in a <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/3.1/html/">Models-3 I/O API</a> file
-by a constant using <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/3.1/html/M3COMBO.html">M3COMBO</a>
+<dd><p>Multiply a variable in a <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/all_versions/html/">Models-3 I/O API</a> file
+by a constant using <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/all_versions/html/M3COMBO.html">M3COMBO</a>
 and place result in a new I/O API file.  Update the file headers
 for the new file with user-specified information.  Models-3 I/O
-API <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/3.1/html/LOGICALS.html">&#8220;Logical names&#8221;</a>
+API <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/all_versions/html/LOGICALS.html">&#8220;Logical names&#8221;</a>
 are defined internally, allowing the user to specify paths to the
 physical files to be manipulated.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -247,10 +247,10 @@ specify paths to the physical files to be manipulated.</p>
 <code class="descclassname">IOAPIpytools.ioapi_pytools.</code><code class="descname">run_regrid</code><span class="sig-paren">(</span><em>fname_raw</em>, <em>fname_regridded</em>, <em>fname_matrix</em>, <em>fname_mattxt</em><span class="sig-paren">)</span><a class="headerlink" href="#IOAPIpytools.ioapi_pytools.run_regrid" title="Permalink to this definition">¶</a></dt>
 <dd><p>perform mass-conservative regrid of Models-3 I/O API data using
 mtxcple</p>
-<p>run <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/3.1/html/MTXCPLE.html">mtxcple</a>
-(from the <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/3.1/html/">Models-3 I/O API</a>) to
+<p>run <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/all_versions/html/MTXCPLE.html">mtxcple</a>
+(from the <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/all_versions/html/">Models-3 I/O API</a>) to
 regrid a specified dataset from a Models-3 I/O API file.</p>
-<p>Models-3 I/O API <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/3.1/html/LOGICALS.html">Logical names</a>
+<p>Models-3 I/O API <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/all_versions/html/LOGICALS.html">Logical names</a>
 are defined internally, allowing the user to specify paths to the
 physical files to be manipulated.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -289,13 +289,13 @@ files to be manipulated.</p>
 <dt id="IOAPIpytools.ioapi_pytools.window_to_NorthAmerica">
 <code class="descclassname">IOAPIpytools.ioapi_pytools.</code><code class="descname">window_to_NorthAmerica</code><span class="sig-paren">(</span><em>fname_in</em>, <em>fname_out</em>, <em>fname_griddesc</em>, <em>grid_name</em><span class="sig-paren">)</span><a class="headerlink" href="#IOAPIpytools.ioapi_pytools.window_to_NorthAmerica" title="Permalink to this definition">¶</a></dt>
 <dd><p>window SiB I/O API file to one quarter of the globe.</p>
-<p>Uses the Models-3 I/O API utility <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/3.1/html/M3WNDW.html">m3wndw</a>
+<p>Uses the Models-3 I/O API utility <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/all_versions/html/M3WNDW.html">m3wndw</a>
 to extract data from an I/O API file to a specified subgrid.</p>
 <p>The window_to_NorthAmerica reflects the function&#8217;s original use to
 extract data that are North of the equator and between 0 W and 180
 W longitude.  Considering this subset (25%) of a global data set
 speeds calculation of regridding matrices considerably.</p>
-<p>Models-3 I/O API <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/3.1/html/LOGICALS.html">Logical names</a>
+<p>Models-3 I/O API <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/all_versions/html/LOGICALS.html">Logical names</a>
 are defined internally, allowing the user to specify paths to the
 physical files to be manipulated.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -309,7 +309,7 @@ API file</li>
 I/O API file to create.  fname_out is overwritten if it
 exists.</li>
 <li><strong>fname_griddesc</strong> (<em>string</em>) &#8211; full path the Models-3 I/O API
-<a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/3.1/html/GRIDDESC.html">GRIDDESC file</a>
+<a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/all_versions/html/GRIDDESC.html">GRIDDESC file</a>
 describing the destination grid.</li>
 <li><strong>grid_name</strong> (<em>string</em>) &#8211; the name of the destination grid in the
 GRIDDESC file.</li>

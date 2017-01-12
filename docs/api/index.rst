@@ -1,7 +1,7 @@
 .. _api-index:
 
 ####################################
-  The IOAPIPytools API
+Programming: The IOAPIPytools API
 ####################################
 
 :Release: |version|

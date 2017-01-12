@@ -16,11 +16,16 @@ executables.
 :Release: |version|
 :Date: |today|
 
+**Dependencies**: The `EDSS/Models-3 I/O API <https://www.cmascenter.org/ioapi/documentation/all_versions/html/>`_ must be `installed <https://www.cmascenter.org/ioapi/documentation/all_versions/html/AVAIL.html#build>`_.
+
+Table of Contents:
+
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
-   api/index.rst
-
+   users/download.rst
+   Usage Examples <users/usage.rst>
+   Programming: IOAPIpytools API <api/IOAPIpytools.rst>
 
 Indices and tables
 ==================

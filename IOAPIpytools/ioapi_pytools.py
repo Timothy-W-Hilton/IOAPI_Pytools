@@ -43,13 +43,13 @@ def ioapi_const_multiply(fname_in,
                          new_units,
                          new_desc):
     """Multiply a variable in a `Models-3 I/O API
-    <https://www.cmascenter.org/ioapi/documentation/3.1/html/>`_ file
+    <https://www.cmascenter.org/ioapi/documentation/all_versions/html/>`_ file
     by a constant using `M3COMBO
-    <https://www.cmascenter.org/ioapi/documentation/3.1/html/M3COMBO.html>`_
+    <https://www.cmascenter.org/ioapi/documentation/all_versions/html/M3COMBO.html>`_
     and place result in a new I/O API file.  Update the file headers
     for the new file with user-specified information.  Models-3 I/O
     API `"Logical names"
-    <https://www.cmascenter.org/ioapi/documentation/3.1/html/LOGICALS.html>`_
+    <https://www.cmascenter.org/ioapi/documentation/all_versions/html/LOGICALS.html>`_
     are defined internally, allowing the user to specify paths to the
     physical files to be manipulated.
 
@@ -129,7 +129,7 @@ def calculate_regrid_matrix(fname_griddesc, fname_matrix, fname_mattxt,
 
     SEE ALSO:
         `Models-3 I/O API mtxcalc documentation
-        <https://www.cmascenter.org/ioapi/documentation/3.1/html/MTXCALC.html>`_
+        <https://www.cmascenter.org/ioapi/documentation/all_versions/html/MTXCALC.html>`_
     """
     os.environ['GRIDDESC'] = fname_griddesc
     os.environ['MATRIX'] = fname_matrix
@@ -163,7 +163,7 @@ def window_to_NorthAmerica(fname_in, fname_out, fname_griddesc, grid_name):
     """window SiB I/O API file to one quarter of the globe.
 
     Uses the Models-3 I/O API utility `m3wndw
-    <https://www.cmascenter.org/ioapi/documentation/3.1/html/M3WNDW.html>`_
+    <https://www.cmascenter.org/ioapi/documentation/all_versions/html/M3WNDW.html>`_
     to extract data from an I/O API file to a specified subgrid.
 
     The window_to_NorthAmerica reflects the function's original use to
@@ -172,7 +172,7 @@ def window_to_NorthAmerica(fname_in, fname_out, fname_griddesc, grid_name):
     speeds calculation of regridding matrices considerably.
 
     Models-3 I/O API `Logical names
-    <https://www.cmascenter.org/ioapi/documentation/3.1/html/LOGICALS.html>`_
+    <https://www.cmascenter.org/ioapi/documentation/all_versions/html/LOGICALS.html>`_
     are defined internally, allowing the user to specify paths to the
     physical files to be manipulated.
 
@@ -184,7 +184,7 @@ def window_to_NorthAmerica(fname_in, fname_out, fname_griddesc, grid_name):
             exists.
         fname_griddesc (string): full path the Models-3 I/O API
             `GRIDDESC file
-            <https://www.cmascenter.org/ioapi/documentation/3.1/html/GRIDDESC.html>`_
+            <https://www.cmascenter.org/ioapi/documentation/all_versions/html/GRIDDESC.html>`_
             describing the destination grid.
         grid_name (string): the name of the destination grid in the
             GRIDDESC file.
@@ -213,13 +213,13 @@ def run_regrid(fname_raw, fname_regridded, fname_matrix, fname_mattxt):
     mtxcple
 
     run `mtxcple
-    <https://www.cmascenter.org/ioapi/documentation/3.1/html/MTXCPLE.html>`_
+    <https://www.cmascenter.org/ioapi/documentation/all_versions/html/MTXCPLE.html>`_
     (from the `Models-3 I/O API
-    <https://www.cmascenter.org/ioapi/documentation/3.1/html/>`_) to
+    <https://www.cmascenter.org/ioapi/documentation/all_versions/html/>`_) to
     regrid a specified dataset from a Models-3 I/O API file.
 
     Models-3 I/O API `Logical names
-    <https://www.cmascenter.org/ioapi/documentation/3.1/html/LOGICALS.html>`_
+    <https://www.cmascenter.org/ioapi/documentation/all_versions/html/LOGICALS.html>`_
     are defined internally, allowing the user to specify paths to the
     physical files to be manipulated.
 
@@ -296,15 +296,15 @@ def boundaries_from_csv(fname_csv,
     """Create lateral boundary conditions file from data in CSV file
 
     Run `M3FAKE
-    <https://www.cmascenter.org/ioapi/documentation/3.1/html/M3FAKE.html>`_
+    <https://www.cmascenter.org/ioapi/documentation/all_versions/html/M3FAKE.html>`_
     to create a boundary condition file from a specified csv file
     containing the boundaries data.  Models-3 I/O API `"Logical names"
-    <https://www.cmascenter.org/ioapi/documentation/3.1/html/LOGICALS.html>`_
+    <https://www.cmascenter.org/ioapi/documentation/all_versions/html/LOGICALS.html>`_
     are defined internally, allowing the user to specify paths to the
     physical files to be manipulated.
 
     Currently only `time-independent
-    <https://www.cmascenter.org/ioapi/documentation/3.1/html/DATETIME.html>`_
+    <https://www.cmascenter.org/ioapi/documentation/all_versions/html/DATETIME.html>`_
     boundary files are supported.
 
     Currently can only use the default vertical sigma-P coordinates
@@ -317,13 +317,13 @@ def boundaries_from_csv(fname_csv,
             file to create.  Will be overwritten if the file already exists.
         fname_griddesc (string): full path to the Models-3 I/O API
            `GRIDDESC
-           <http://www.cmascenter.org/ioapi/documentation/3.1/html/GRIDS.html#horiz>`_
+           <http://www.cmascenter.org/ioapi/documentation/all_versions/html/GRIDS.html#horiz>`_
            file describing the model grid.
         gridname (string): name of the grid to create boundaries for (must
             be an entry in the GRIDDESC file).
         nlevs (int): number of vertical levels.
         file_desc (string): string to populate the `FDESC3D
-            <http://www.cmascenter.org/ioapi/documentation/3.1/html/INCLUDE.html#fdesc>`_
+            <http://www.cmascenter.org/ioapi/documentation/all_versions/html/INCLUDE.html#fdesc>`_
             metadata field in the boundary condition file.  Defaults
             to "boundary data".
 
@@ -392,15 +392,15 @@ def dummy_top_bounds(fname_bdy,
     """Create lateral boundary conditions file from data in CSV file
 
     Run `M3FAKE
-    <https://www.cmascenter.org/ioapi/documentation/3.1/html/M3FAKE.html>`_
+    <https://www.cmascenter.org/ioapi/documentation/all_versions/html/M3FAKE.html>`_
     to create a top boundary condition file containing 0.0 at all
     locations.  Models-3 I/O API `"Logical names"
-    <https://www.cmascenter.org/ioapi/documentation/3.1/html/LOGICALS.html>`_
+    <https://www.cmascenter.org/ioapi/documentation/all_versions/html/LOGICALS.html>`_
     are defined internally, allowing the user to specify paths to the
     physical files to be manipulated.
 
     Currently only `time-independent
-    <https://www.cmascenter.org/ioapi/documentation/3.1/html/DATETIME.html>`_
+    <https://www.cmascenter.org/ioapi/documentation/all_versions/html/DATETIME.html>`_
     boundary files are supported.
 
     ARGS:
@@ -408,12 +408,12 @@ def dummy_top_bounds(fname_bdy,
             file to create.  Will be overwritten if the file already exists.
         fname_griddesc (string): full path to the Models-3 I/O API
            `GRIDDESC
-           <http://www.cmascenter.org/ioapi/documentation/3.1/html/GRIDS.html#horiz>`_
+           <http://www.cmascenter.org/ioapi/documentation/all_versions/html/GRIDS.html#horiz>`_
            file describing the model grid.
         gridname (string): name of the grid to create boundaries for (must
             be an entry in the GRIDDESC file).
         file_desc (string): string to populate the `FDESC3D
-            <http://www.cmascenter.org/ioapi/documentation/3.1/html/INCLUDE.html#fdesc>`_
+            <http://www.cmascenter.org/ioapi/documentation/all_versions/html/INCLUDE.html#fdesc>`_
             metadata field in the boundary condition file.  Defaults
             to "boundary data".
 

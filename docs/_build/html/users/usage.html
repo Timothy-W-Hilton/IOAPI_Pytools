@@ -43,18 +43,61 @@
             
   <div class="section" id="usage">
 <h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="preliminary-boilerplate">
+<h2>Preliminary boilerplate<a class="headerlink" href="#preliminary-boilerplate" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">IOAPIPytools</span> <span class="k">import</span> <span class="n">ioapi_pytools</span>
 </pre></div>
 </div>
-<p>This is a work in progress - stay tuned!</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Updated:</th><td class="field-body">12 January 2017</td>
-</tr>
-</tbody>
-</table>
+</div>
+<div class="section" id="example-data">
+<h2>Example data<a class="headerlink" href="#example-data" title="Permalink to this headline">¶</a></h2>
+<p>IOAPIPytools includes two data files to illustrate the examples below:</p>
+<p>1. A small <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/all_versions/html/">EDSS/Models-3 I/O API</a>
+data file (SiB_20080701_1.25x1.0_IOAPI.nc) containing four hours of
+CO<sub>2</sub> gross primary productivity (GPP) and carbonyl sulfide (COS or
+OCS) GPP from the Simple Biosphere Model v. 3.0 (Sellers et al., 1996;
+Baker et al., 2008, 2010).</p>
+<p>2. An <a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/all_versions/html/">EDSS/Models-3 I/O API</a>
+&#8220;<a class="reference external" href="https://www.cmascenter.org/ioapi/documentation/all_versions/html/GRIDDESC.html">GRIDDESC</a>&#8221;
+file (GRIDDESCSiB) that describes two coordinate systems.</p>
+</div>
+<div class="section" id="example-1-calculating-regridding-matrices">
+<h2>Example 1: Calculating regridding matrices<a class="headerlink" href="#example-1-calculating-regridding-matrices" title="Permalink to this headline">¶</a></h2>
+<p>This example calculates matrices to regrid SiB data from its native
+global 1.25 degree by 1.0 degree lat/lon grid to a North Pole
+stereographic grid centered over North America.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">IOAPIPytools</span> <span class="k">import</span> <span class="n">ioapi_pytools</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pkg_resources</span>  <span class="c1"># to access the example data files</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">DATA_PATH</span> <span class="o">=</span> <span class="n">pkg_resources</span><span class="o">.</span><span class="n">resource_filename</span><span class="p">(</span><span class="s1">&#39;IOAPIPytools&#39;</span><span class="p">,</span> <span class="s1">&#39;data/&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fname_griddesc</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATA_PATH</span><span class="p">,</span> <span class="s1">&#39;GRIDDESCSiB&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ioapi_pytools</span><span class="o">.</span><span class="n">calculate_regrid_matrix</span><span class="p">(</span><span class="n">fname_griddesc</span><span class="o">=</span><span class="n">fname_griddesc</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                                      <span class="n">fname_matrix</span><span class="o">=</span><span class="s1">&#39;my_regrid_matrix&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                                      <span class="n">fname_mattxt</span><span class="o">=</span><span class="s1">&#39;my_regrid_mattxt&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                                      <span class="n">in_grid</span><span class="o">=</span><span class="s1">&#39;SiB_grid&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                                      <span class="n">out_grid</span><span class="o">=</span><span class="s1">&#39;ARCNAGRID&#39;</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                                      <span class="n">col_refinement</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span>                                      <span class="n">row_refinement</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p>Baker, I. T., L. Prihodko, A. S. Denning, M. Goulden, S. Miller,
+and H. R. da Rocha (2008), Seasonal drought stress in the amazon:
+Reconciling models and observations, Journal of Geophysical Research:
+Biogeosciences, 113(G1), n/a–n/a, doi:<a class="reference external" href="http://dx.doi.org/10.1029/2007JG000644">10.1029/2007JG000644</a>.</p>
+<p>Baker, I. T., A. S. Denning, and R. Stöckli (2010), North American
+gross primary productivity: Regional characterization and interannual
+variability, Tellus B, 62(5), 533–549,
+doi:<a class="reference external" href="http://dx.doi.org/10.1111/j.1600-0889.2010.00492.x">10.1111/j.1600-0889.2010.00492.x</a>.</p>
+<p>Sellers, P. J., D. A. Randall, G. J. Collatz, J. A. Berry, C. B. Field, D. A. Dazlich, C. Zhang, G. D. Collelo,
+and L. Bounoua (1996), A Revised Land Surface Parameterization (SiB2)
+for Atmospheric GCMS. Part I: Model Formulation., Journal of Climate,
+9, 676–705.</p>
+<p>This is a work in progress - stay tuned!
+:Updated: 13 January 2017</p>
+</div>
 </div>
 
 
@@ -62,7 +105,18 @@
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><div class="relations">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Usage</a><ul>
+<li><a class="reference internal" href="#preliminary-boilerplate">Preliminary boilerplate</a></li>
+<li><a class="reference internal" href="#example-data">Example data</a></li>
+<li><a class="reference internal" href="#example-1-calculating-regridding-matrices">Example 1: Calculating regridding matrices</a></li>
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>

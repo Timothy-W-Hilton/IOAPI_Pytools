@@ -8,3 +8,4 @@ parts
 *.egg-info
 lib
 lib64
+!SiB_20080701_1.25x1.0_IOAPI.nc

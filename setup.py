@@ -10,11 +10,14 @@ config = {
     'url': 'thilton@ucmerced.edu',
     'download_url': 'thilton@ucmerced.edu',
     'author_email': 'thilton@ucmerced.edu',
-    'version': '0.1',
+    'version': '1.0',
     'install_requires': ['numpy'],
-    'packages': ['IOAPIpytools'],
+    'packages': ['IOAPIPytools'],
     'scripts': [],
-    'name': 'IOAPIpytools'
+    'name': 'IOAPIPytools'
 }
 
-setup(**config)
+setup(package_dir={'IOAPIPytools': 'IOAPIpytools'},
+      package_data={'IOAPIPytools': ['IOAPIpytools/data/*']},
+      include_package_data=True,
+      **config)

@@ -1,0 +1,13 @@
+!  coords --2 lines:  name; type, P-alpha, P-beta, P-gamma, xcent, ycent
+'LATLON'            !  "the" lat-lon coord. system
+    1,0.0D0, 0.0D0, 0.0D0, 0.0D0, 0.0D0
+'ARCTAS'        !  standard Lambert for SMRAQ, etc.
+    6,  1.0, 90.0, -40, 110, 82.9999618530273
+' '                                                               ! end coords
+'ARCNAGRID'
+'ARCTAS' -7080392.000, -6795179.000, 60000, 60000, 124, 124, 1
+'SiB_grid'
+'LATLON' -180, -90, 1.25, 1., 288, 180, 1
+'SiB_grid_NA'
+'LATLON' -180, 0., 1.25, 1., 144, 90, 1
+' '                                                !  end grids.

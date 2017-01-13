@@ -1,0 +1,17 @@
+include README.rst
+include MANIFEST.in
+include LICENSE
+include setup.cfg
+include setup.py
+recursive-include IOAPIpytools/data *
+recursive-include IOAPIpytools/*
+include docs/users/*rst
+include docs/api/*rst
+include docs/README.md
+include docs/index.md
+include docs/index.rst
+include docs/make.py
+include docs/conf.py
+include docs/Makefile
+include docs/make.bat
+include docs/_config.yml

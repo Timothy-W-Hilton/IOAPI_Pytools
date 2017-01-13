@@ -5,7 +5,9 @@ data files using python.  Most of these are python wrappers for the
 <https://www.cmascenter.org/ioapi/documentation/all_versions/html/AA.html#tools>`_
 executables.
 
-See also the `full documentation
-<https://timothy-w-hilton.github.io/IOAPI_Pytools/>`_
+The `full documentation
+<https://timothy-w-hilton.github.io/IOAPI_Pytools/_build/html/index.html>`_
+includes dowload and installation instructions, usage examples, and
+API documentation.
 
 17 June 2016 --  `Timothy W. Hilton <thilton@ucmerced.edu>`_

@@ -6,4 +6,7 @@ the
 
 See also the [full documentation](https://timothy-w-hilton.github.io/IOAPI_Pytools/_build/html/index.html)
 
+IOAPIPytools source code is freely available
+on [GitHub](https://github.com/Timothy-W-Hilton/IOAPI_Pytools)
+
 17 June 2016 --  [Timothy W. Hilton](thilton@ucmerced.edu)

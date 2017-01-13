@@ -13,6 +13,9 @@ data files using python.  Most of these are python wrappers for the
 <https://www.cmascenter.org/ioapi/documentation/all_versions/html/AA.html#tools>`_
 executables.
 
+IOAPIPytools source code is freely available from `GitHub
+<https://github.com/Timothy-W-Hilton/IOAPI_Pytools>`_
+
 :Release: |version|
 :Date: |today|
 

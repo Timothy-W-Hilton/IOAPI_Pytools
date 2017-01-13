@@ -4,6 +4,7 @@ include LICENSE
 include setup.cfg
 include setup.py
 recursive-include IOAPIpytools/ *
+recursive-include IOAPIpytools/data/ *
 include docs/users/*rst
 include docs/api/*rst
 include docs/README.md

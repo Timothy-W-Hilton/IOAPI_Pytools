@@ -3,8 +3,7 @@ include MANIFEST.in
 include LICENSE
 include setup.cfg
 include setup.py
-recursive-include IOAPIpytools/data *
-recursive-include IOAPIpytools/*
+recursive-include IOAPIpytools/ *
 include docs/users/*rst
 include docs/api/*rst
 include docs/README.md

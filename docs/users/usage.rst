@@ -23,11 +23,23 @@ data file (SiB_20080701_1.25x1.0_IOAPI.nc) containing four hours of
 OCS) GPP from the Simple Biosphere Model v. 3.0 (Sellers et al., 1996;
 Baker et al., 2008, 2010).
 
+.. figure::  ../../IOAPIpytools/data/SiB_20080701_1.25x1.0_IOAPI.png
+   :scale: 70 %
+   :alt: SiB CO2 GPP map
+   :figwidth: 100 %
+
+   Figure 1: First time step of SiB_20080701_1.25x1.0_IOAPI.nc.  Click
+   image for full-size version.
+
 2. An `EDSS/Models-3 I/O API
 <https://www.cmascenter.org/ioapi/documentation/all_versions/html/>`_
 "`GRIDDESC
 <https://www.cmascenter.org/ioapi/documentation/all_versions/html/GRIDDESC.html>`_"
-file (GRIDDESCSiB) that describes two coordinate systems.
+file (`GRIDDESCSiB <../../../../IOAPIpytools/data/GRIDDESCSiB>`_) that
+describes two coordinate systems: the 1.0 x 1.25 degree global grid of
+the native SiB data (SiB_grid), and a North Pole stereographic grid
+with 60 kilometer grid cells that spans most of North America
+(ARCNAGRID).
 
 Example 1: Calculating regridding matrices
 --------------------------------------------------
@@ -36,18 +48,38 @@ This example calculates matrices to regrid SiB data from its native
 global 1.25 degree by 1.0 degree lat/lon grid to a North Pole
 stereographic grid centered over North America.
 
-   >>> from IOAPIPytools import ioapi_pytools
-   >>> import pkg_resources  # to access the example data files
-   >>> import os
-   >>> DATA_PATH = pkg_resources.resource_filename('IOAPIPytools', 'data/')
-   >>> fname_griddesc = os.path.join(DATA_PATH, 'GRIDDESCSiB')
-   >>> ioapi_pytools.calculate_regrid_matrix(fname_griddesc=fname_griddesc,
-   >>>                                       fname_matrix='my_regrid_matrix',
-   >>>                                       fname_mattxt='my_regrid_mattxt',
-   >>>                                       in_grid='SiB_grid',
-   >>>                                       out_grid='ARCNAGRID',
-   >>>                                       col_refinement=2,
-   >>>                                       row_refinement=2)
+.. code-block:: python
+   :linenos:
+
+   from IOAPIPytools import ioapi_pytools
+   import pkg_resources  # to access the example data files
+   import os
+   DATA_PATH = pkg_resources.resource_filename('IOAPIPytools', 'data/')
+   fname_griddesc = os.path.join(DATA_PATH, 'GRIDDESCSiB')
+   ioapi_pytools.calculate_regrid_matrix(fname_griddesc=fname_griddesc,
+                                         fname_matrix='my_regrid_matrix',
+                                         fname_mattxt='my_regrid_mattxt',
+                                         in_grid='SiB_grid',
+                                         out_grid='ARCNAGRID',
+                                         col_refinement=2,
+                                         row_refinement=2)
+
+Example 2: Regridding data
+--------------------------------------------------
+
+This example picks up where example 1 ended, \
+using the matrices
+calculated in example 1 to regrid the SiB CO2 GPP to the 60-kilometer
+North American grid described in GRIDDESCSiB.
+
+.. code-block:: python
+   :linenos:
+
+   fname_data = os.path.join(DATA_PATH, 'SiB_20080701_1.25x1.0_IOAPI.nc')
+   ioapi_pytools.run_regrid(fname_raw=fname_data,
+                            fname_regridded='SiB_20080701_60km_IOAPI.nc',
+                            fname_matrix='my_regrid_matrix',
+                            fname_mattxt='my_regrid_mattxt')
 
 References
 --------------------------------------------------

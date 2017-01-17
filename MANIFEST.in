@@ -5,6 +5,7 @@ include setup.cfg
 include setup.py
 recursive-include IOAPIpytools *
 recursive-include IOAPIpytools/data *
+include IOAPIpytools/data/SiB_20080701_1.25x1.0_IOAPI.png
 include docs/users/*rst
 include docs/api/*rst
 include docs/README.md

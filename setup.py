@@ -5,10 +5,10 @@ except ImportError:
 
 config = {
     'description': ('A collection of wrapper functions'
-                    ' for the Models-3 I/O API'),
+                    ' for the EDSS Models-3 I/O API'),
     'author': 'Timothy W. Hilton',
-    'url': 'thilton@ucmerced.edu',
-    'download_url': 'thilton@ucmerced.edu',
+    'url': 'https://github.com/Timothy-W-Hilton/IOAPI_Pytools',
+    'download_url': 'https://github.com/Timothy-W-Hilton/IOAPI_Pytools',
     'author_email': 'thilton@ucmerced.edu',
     'version': '1.0',
     'install_requires': ['numpy'],

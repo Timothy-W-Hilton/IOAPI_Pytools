@@ -1,5 +1,8 @@
 .. |H2O| replace:: H\ :sub:`2`\ O
 .. |CO2| replace:: CO\ :sub:`2`\
+.. |br| raw:: html
+
+   <br />
 
 Usage
 =====
@@ -7,9 +10,12 @@ Usage
 Preliminary boilerplate
 --------------------------------------------------
 
-::
+Import the ioapi_pytools module.
 
-   >>> from IOAPIPytools import ioapi_pytools
+.. code-block:: python
+   :linenos:
+
+   from IOAPIPytools import ioapi_pytools
 
 Example data
 --------------------------------------------------
@@ -80,6 +86,23 @@ North American grid described in GRIDDESCSiB.
                             fname_regridded='SiB_20080701_60km_IOAPI.nc',
                             fname_matrix='my_regrid_matrix',
                             fname_mattxt='my_regrid_mattxt')
+
+.. |regrid10001000| image:: ../../IOAPIpytools/data/SiB_20080701_60km_10001000_IOAPI.png
+   :scale: 50 %
+   :align: middle
+.. |regrid00020002| image:: ../../IOAPIpytools/data/SiB_20080701_60km_00020002_IOAPI.png
+   :scale: 50 %
+   :align: middle
+
++----------------------------------------+----------------------------------------+
+| |regrid00020002|                       |  |regrid10001000|                      |
+|                                        |                                        |
+|Figure 2: Results of example 2 as       |Figure 3: Same as fig 2., but higher    |
+|written (first time step of the         |resolution column and row refinement.   |
+|regridded data). Column refinement = 2, |Column refinement = 1000, row refinement|
+|row refinement = 2.                     |= 1000.                                 |
+|                                        |                                        |
++----------------------------------------+----------------------------------------+
 
 References
 --------------------------------------------------

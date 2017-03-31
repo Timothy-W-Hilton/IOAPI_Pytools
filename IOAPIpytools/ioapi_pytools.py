@@ -21,6 +21,48 @@ import subprocess
 from datetime import datetime
 
 
+def run_latlon(fname_griddesc,
+               fname_gridfile='NONE',
+               fname_bndfile='NONE',
+               gridname=None):
+    """generate grid and boundary (lon, lat) points from a GRIDDESC file
+
+    use the `Models-3 I/O API
+    <https://www.cmascenter.org/ioapi/documentation/3.1/html/>`_
+    `latlon
+    <https://www.cmascenter.org/ioapi/documentation/all_versions/html/LATLON.html>_ tool.
+    If fname_gridfile or fname_bndfile are not specified, they are not
+    written.
+
+    ARGS:
+        fname_griddesc (string): full path to the GRIDDESC file
+        fname_gridfile (string): full path to the I/O API file to which
+            (lon, lat) coordinates for the grid points shall be written.
+        fname_bndfile (string): full path to the I/O API file to which
+            (lon, lat) coordinates for the boundary points shall be
+            written.
+        gridname (string): name of the grid in the GRIDDESC file to describe
+
+    EXAMPLE:
+        >>> ioapi_pytools.run_latlon(fname_griddesc='MY_GRIDDESC',
+                                     fname_gridfile='output_latlon.nc',
+                                     gridname='MYGRID')
+    """
+    os.environ['GRIDDESC'] = fname_griddesc
+    os.environ['GRDFILE'] = fname_gridfile
+    os.environ['BDYFILE'] = fname_bndfile
+    cmd = ("latlon << DONE\n"
+           "Y\n"
+           "GRDFILE\n"
+           "BDYFILE\n"
+           "Y\n"   # Specify grid by name from GRIDDESC file?
+           "{gridname}\n"
+           "DONE\n".format(gridname=gridname))
+    delete_if_exists(fname_gridfile)
+    delete_if_exists(fname_bndfile)
+    subprocess.call(cmd, shell=True)
+
+
 def delete_if_exists(fname):
     """remove a file if it exists, with a message to stdout
 
@@ -475,7 +517,6 @@ def run_bcwndw(fname_gridded, fname_bdy,
                     'DONE\n'.format(LOCOL=LOCOL, HICOL=HICOL,
                                     LOROW=LOROW, HIROW=HIROW),
                     shell=True)
-
 
 
 def concat(file1, file2):
